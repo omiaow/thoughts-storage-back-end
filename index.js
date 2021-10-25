@@ -18,7 +18,7 @@ app.use("/auth", authRoutes);
 app.use("/form", formRoutes);
 
 const CONNECTION_URL = config.get("mongoURL");
-const PORT = config.get("port") || 5000;
+const PORT = process.env.PORT || config.get("port");
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
