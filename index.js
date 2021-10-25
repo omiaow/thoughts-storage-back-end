@@ -17,6 +17,10 @@ app.use(cors());
 app.use("/auth", authRoutes);
 app.use("/form", formRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Back-end is running successfully!");
+});
+
 const CONNECTION_URL = config.get("mongoURL");
 const PORT = process.env.PORT || config.get("port");
 
