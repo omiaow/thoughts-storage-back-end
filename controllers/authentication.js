@@ -2,7 +2,9 @@ import user from "../models/user.js";
 import validator from "express-validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import config from "config";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // check if registration request is valid
 export const registrationValidator = [
@@ -83,8 +85,8 @@ export const login = async (req, res) => {
 
     const token = jwt.sign(
       { userId: enteringUser.id },
-      config.get("jwtSecret"),
-      { expiresIn: "3h" }
+      process.env.jwtSecret,
+      { expiresIn: "24h" }
     );
 
     res.json({ token: token, userId: enteringUser.id });

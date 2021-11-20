@@ -1,24 +1,32 @@
 {
-  "name": "server",
+  "name": "thoughts-storage-back-end",
   "version": "1.0.0",
-  "description": "",
+  "description": "thoughts-storage-back-end",
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omiaow/thoughts-storage-back-end.git"
+  },
+  "author": "Omurzak Keldibekov",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omiaow/thoughts-storage-back-end/issues"
+  },
+  "homepage": "https://github.com/omiaow/thoughts-storage-back-end#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
-    "config": "^3.3.6",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-validator": "^6.12.2",
+    "express-validator": "^6.13.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.10",
-    "nodemon": "^2.0.13"
+    "mongoose": "^6.0.13",
+    "nodemon": "^2.0.15"
   }
 }

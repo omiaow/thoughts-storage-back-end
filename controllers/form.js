@@ -65,29 +65,46 @@ export const getOne = async (req, res) => {
 // submit filled form
 export const submit = async (req, res) => {
   try {
-    const { listOfForms, _id, owner } = req.body;
+
+    const createEndings = (number) => {
+      if (number % 100 === 11 || number % 100 === 12 || number % 100 === 13) return "th";
+      else if (number % 10 === 1) return "st";
+      else if (number % 10 === 2) return "nd";
+      else if (number % 10 === 3) return "rd";
+      else return "th";
+    }
+
+    const { name, listOfForms, _id } = req.body;
 
     for (let i=0; i<listOfForms.length; i++) {
       let item = listOfForms[i];
       if (item.isImportant) {
         if ((item.name === "paragraph" || item.name === "text") && item.text.length === 0) {
-          return res.status(400).json({ message: `fill the ${i+1}-form` });
+          return res.status(400).json({ message: `Answer the ${i+1}${createEndings(i+1)} question or task` });
         } else if (item.name === "check" || item.name === "radio") {
           let isChecked = false;
           for (let j=0; j<item.options.length; j++) {
             if (item.options[j].isTrue) isChecked = true;
           }
-          if (!isChecked) return res.status(400).json({ message: `fill the ${i+1}-form` });
+          if (!isChecked) return res.status(400).json({ message: `Answer the ${i+1}${createEndings(i+1)} question or task` });
         } else if (item.name === "date" && !item.date) {
-          return res.status(400).json({ message: `fill the ${i+1}-form` });
+          return res.status(400).json({ message: `Answer the ${i+1}${createEndings(i+1)} question or task` });
         }
+      }
+
+      if (item.name === "radio") {
+        let checked = 0;
+        for (let j=0; j<item.options.length; j++) {
+          if (item.options[j].isTrue) checked++;
+        }
+        if (checked > 1) return res.status(400).json({ message: `Choose one option for ${i+1}${createEndings(i+1)} question or task` });
       }
     }
 
     const newAnswer = new answer({
-      name: req.body.name,
-      answers: req.body.listOfForms,
-      belongsTo: req.body._id
+      name: name,
+      answers: listOfForms,
+      belongsTo: _id
     });
 
     await newAnswer.save();

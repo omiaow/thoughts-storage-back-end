@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
-import config from "config";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const auth = (req, res, next) => {
   if (req.method === "OPTIONS") {
@@ -14,7 +16,7 @@ const auth = (req, res, next) => {
       return res.status(401).json({ message: "No authorization" });
     }
 
-    const decoded = jwt.verify(token, config.get("jwtSecret"));
+    const decoded = jwt.verify(token, process.env.jwtSecret);
     req.user = decoded;
     next();
 

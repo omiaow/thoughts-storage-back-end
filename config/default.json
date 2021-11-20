@@ -1,5 +1,0 @@
-{
-  "port": 5000,
-  "jwtSecret": "secret key",
-  "mongoURL": "mongodb+srv://thoughtsstorage:thoughtsstoragepass@cluster0.4asss.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-}
