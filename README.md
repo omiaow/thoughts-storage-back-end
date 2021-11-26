@@ -36,6 +36,8 @@ Try [Thoughts-Storage](https://thoughts-storage.netlify.app/) for free.
 
 - **[Back-end](https://github.com/omiaow/thoughts-storage-back-end)** - Express application on Node.js with MongoDB Atlas connection and with "bcrypt" and "jsonwebtoken" dependencies.
 
+- **[npm form package](https://github.com/omiaow/react-thoughts-storage-form)** - React package with react-contenteditable dependency.
+
 <hr>
 <p align="center">
   Developing with ❤️ in Bishkek
