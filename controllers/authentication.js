@@ -71,7 +71,7 @@ export const register = async (req, res) => {
 
 // check if login request is valid
 export const loginValidator = [
-  validator.check("email", "Enter valid Email").normalizeEmail().isEmail(),
+  validator.check("email", "Enter valid Email").isEmail(),
   validator.check("password", "Enter password").exists()
 ];
 
