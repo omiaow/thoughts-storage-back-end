@@ -19,7 +19,7 @@ app.use("/form", formRoutes);
 
 // to check if backend is not crashed
 app.get("/", (req, res) => {
-  res.send("Server launched perfectly!");
+  res.send(`Server launched perfectly on ${req.protocol}://${req.get('host')}${req.originalUrl}`);
 });
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
